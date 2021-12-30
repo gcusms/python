@@ -43,6 +43,7 @@ class Box2(QWidget):
         self.layout_h.addWidget(self.text1)
         self.layout_h.addWidget(self.text1_save)
         self.layout_h.setStretch(0, 1)
+        # self.layout_h.addStretch(1)
         self.layout_h.addWidget(self.text2)
         self.layout_h.addWidget(self.text3)
         self.box2.setLayout(self.layout_h)
@@ -84,7 +85,7 @@ class WindowClass(QWidget):
 
         else:
             message = QMessageBox
-            message = QMessageBox.information(self, "注意", "请判断路径是否正确\n或大小是否已经设置", QMessageBox.Yes | QMessageBox.No)  # 使用infomation信息框"标题
+            message = QMessageBox.information(self, "注意", "请判断路径是否正确\n或大小是否已经设置",  QMessageBox.Yes)  # 使用infomation信息框"标题
 
     def SaveDir(self):
         self.save_path_sub = QFileDialog.getExistingDirectory(self)  # 文件保存路径
