@@ -64,6 +64,7 @@ class WindowClass(QWidget):
         layout_main.addWidget(self.box2_cla.box2)
         self.setLayout(layout_main)
 
+
     def Image_Char(self):
         flag_path = self.box2_cla.text1.text() + self.box2_cla.text1_save.text()
         flag_size = self.box2_cla.text2.text() + self.box2_cla.text2.text()
