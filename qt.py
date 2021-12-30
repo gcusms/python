@@ -32,9 +32,9 @@ class Box2(QWidget):
         super(Box2, self).__init__(parent)  # 解决多重继承的问题
         self.box2 = QGroupBox()
         self.text1 = QLineEdit()
-        self.text1.setPlaceholderText('请输入图片文件夹路径')
+        self.text1.setPlaceholderText('读取图片文件夹路径')
         self.text1_save = QLineEdit()
-        self.text1_save.setPlaceholderText('请保存图片文件夹路径')
+        self.text1_save.setPlaceholderText('保存图片文件夹路径')
         self.text2 = QLineEdit()
         self.text2.setPlaceholderText('长')
         self.text3 = QLineEdit()

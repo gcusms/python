@@ -90,7 +90,6 @@ class WindowClass(QWidget):
         self.save_path_sub = QFileDialog.getExistingDirectory(self)  # 文件保存路径
         self.box2_cla.text1_save.setText(self.save_path_sub)
 
-
         # img = cv2.imread('D:/tu/in/squire.jpeg')
         # cv2.imshow('image', img)
         # write_img = cv2.resize(img, (640,480))
