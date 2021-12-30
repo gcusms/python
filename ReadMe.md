@@ -15,3 +15,6 @@ pip install opencv-python==4.2.0.32
 Remember do not use the same path to load the images and save the images
 
 #### please enjoy the program
+
+
+The program just use to resize of the images in a dir,but if the user want to use the face detection,please make sure of the opencv face detect 'xml' path
