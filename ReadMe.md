@@ -12,7 +12,7 @@ pip uninstall opencv-python
 pip install opencv-python==4.2.0.32
 ~~~
 <br>
-Remember do not use the same path to load the images and save the images
+<font color= green>Remember do not use the same path to load the images and save the images</font>
 
 #### please enjoy the program
 

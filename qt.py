@@ -107,7 +107,7 @@ if __name__ == '__main__':
     # 声明对象
     win = WindowClass()
     # 设置窗口的名称
-    win.setWindowTitle('你好python123')
+    win.setWindowTitle('图片格式化程序')
     # 设置窗口的大小
     win.setFixedSize(640, 480)
     # 显示窗口
