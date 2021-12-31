@@ -1,9 +1,11 @@
+
 import os
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtWidgets import QPushButton, QHBoxLayout, QGroupBox, QLineEdit, QFileDialog, QVBoxLayout, QMessageBox
+from PyQt5.QtWidgets import QPushButton, QHBoxLayout, QGroupBox, QLineEdit, QFileDialog, QVBoxLayout, QMessageBox,QLabel
 from PyQt5.QtCore import QCoreApplication
 import cv2
+
 
 
 # BOX1的加载
@@ -13,14 +15,16 @@ class Box1(QWidget):
         self.box1 = QGroupBox()
         self.box1.setFixedHeight(100)
         self.btn1 = QPushButton('加载图像路径')
-        self.btn2 = QPushButton('格式化')
+        self.btn2 = QPushButton('开始处理')
         self.btn_save = QPushButton('加载保存路径')
         self.btn3 = QPushButton('退出')
         self.btn1.clicked.connect(lambda: print(self.btn1.text()))  # connect button
         self.btn3.clicked.connect(QCoreApplication.instance().quit)  # 关闭程序
+        self.label_flag = QLabel('是否设置顺序名字排列')
         self.layouth = QHBoxLayout()
         self.layouth.addWidget(self.btn1)
         self.layouth.addWidget(self.btn_save)
+        self.layouth.addWidget(self.label_flag)
         self.layouth.addWidget(self.btn2)
         self.layouth.addWidget(self.btn3)
         self.box1.setLayout(self.layouth)
@@ -54,16 +58,20 @@ class WindowClass(QWidget):
         super(WindowClass, self).__init__(parent)  # 解决多重继承的问题
         # self.btn1 = QPushButton('按钮1')
         # self.btn1.clicked.connect(lambda: print(self.btn1.text()))  # connect button
+
+        self.save_mode = False 
         # 水平控件
         self.box1_cla = Box1()  # 对象1声明
         self.box1_cla.btn1.clicked.connect(lambda: self.Dir_read())
         self.box1_cla.btn2.clicked.connect(lambda: self.Image_Char())
         self.box1_cla.btn_save.clicked.connect(lambda: self.SaveDir())
+
         self.box2_cla = Box2()  # 对象2声明
         layout_main = QVBoxLayout()
         layout_main.addWidget(self.box1_cla.box1)
         layout_main.addWidget(self.box2_cla.box2)
         self.setLayout(layout_main)
+        
 
 
     def Image_Char(self):
@@ -74,11 +82,13 @@ class WindowClass(QWidget):
             print(s)
             path_input = self.box2_cla.text1.text()  # 加载图片文件夹
             list_path = os.listdir(path_input)
+            count = 1
             for filename in list_path:
                 src_img_ = cv2.imread(path_input + '/' + filename)
                 print(filename)
                 write_img = cv2.resize(src_img_, (int(self.box2_cla.text2.text()), int(self.box2_cla.text3.text())))
-                cv2.imwrite(str(self.save_path_sub) + '/' + filename, write_img)
+                cv2.imwrite(str(self.save_path_sub) + '/' + str(count )+ '.jpg', write_img)
+                count += 1
                 # if filename == list_path[]:
                 #     break
             print('Image Save Successful')
@@ -101,6 +111,9 @@ class WindowClass(QWidget):
         download_path = QFileDialog.getExistingDirectory(self)
         self.box2_cla.text1.setText(download_path)
 
+
+        
+        
 
 if __name__ == '__main__':
     # 获得命令行参数
